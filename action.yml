@@ -1,6 +1,9 @@
 name: 'Firebolt security scan'
 description: 'Detect security issues and bad practices in repository'
 inputs:
+  github-key:
+    description: 'Github token'
+    required: true
   fossa-key:
     description: 'Fossa API key'
     required: true
@@ -13,7 +16,7 @@ runs:
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.6
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        GITHUB_TOKEN: ${{ inputs.github-key }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ inputs.sonar-key }}
       with:
         args: >
@@ -35,4 +38,4 @@ runs:
     - name: "Run FOSSA Scan"
       uses: fossas/fossa-action@v1
       with:
-        api-key: ${{secrets.fossaApiKey}}
+        api-key: ${{input.fossa-key}}
