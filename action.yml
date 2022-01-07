@@ -23,12 +23,12 @@ runs:
           -Dsonar.organization=firebolt-db
           -Dsonar.projectKey=firebolt-db_firebolt-python-sdk
           -Dsonar.sources=src
-    - name: "Fossa branch fix"
-      if: ${{ github.event_name == 'pull_request' }}
-      run: |
-        git fetch
-        git branch --track ${GITHUB_HEAD_REF##*/} origin/${GITHUB_HEAD_REF##*/}
-        git checkout ${GITHUB_HEAD_REF##*/}
+    # - name: "Fossa branch fix"
+    #   if: ${{ github.event_name == 'pull_request' }}
+    #   run: |
+    #     git fetch
+    #     git branch --track ${GITHUB_HEAD_REF##*/} origin/${GITHUB_HEAD_REF##*/}
+    #     git checkout ${GITHUB_HEAD_REF##*/}
       shell: bash
     - name: "Build"
       run: |
