@@ -38,4 +38,4 @@ runs:
     - name: "Run FOSSA Scan"
       uses: fossas/fossa-action@v1
       with:
-        api-key: ${{input.fossa-key}}
+        api-key: ${{ inputs.fossa-key }}
