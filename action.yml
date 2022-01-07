@@ -23,13 +23,13 @@ runs:
           -Dsonar.organization=firebolt-db
           -Dsonar.projectKey=firebolt-db_firebolt-python-sdk
           -Dsonar.sources=src
-    # - name: "Fossa branch fix"
-    #   if: ${{ github.event_name == 'pull_request' }}
-    #   run: |
-    #     git fetch
-    #     git branch --track ${GITHUB_HEAD_REF##*/} origin/${GITHUB_HEAD_REF##*/}
-    #     git checkout ${GITHUB_HEAD_REF##*/}
-    #   shell: bash
+    - name: "Fossa branch fix"
+      if: ${{ github.event_name == 'pull_request' }}
+      run: |
+        git fetch
+        git branch --track ${GITHUB_HEAD_REF##*/} origin/${GITHUB_HEAD_REF##*/}
+        git checkout ${GITHUB_HEAD_REF##*/}
+      shell: bash
     - name: "Build"
       run: |
         python3 -m pip install pipenv
@@ -39,3 +39,8 @@ runs:
       uses: fossas/fossa-action@v1
       with:
         api-key: ${{ inputs.fossa-key }}
+    - name: "Run FOSSA Test"
+      uses: fossas/fossa-action@v1
+      with:
+        api-key: ${{ inputs.fossa-key }}
+        run-tests: true
