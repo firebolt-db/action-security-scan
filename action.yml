@@ -29,7 +29,7 @@ runs:
     #     git fetch
     #     git branch --track ${GITHUB_HEAD_REF##*/} origin/${GITHUB_HEAD_REF##*/}
     #     git checkout ${GITHUB_HEAD_REF##*/}
-      shell: bash
+    #   shell: bash
     - name: "Build"
       run: |
         python3 -m pip install pipenv
