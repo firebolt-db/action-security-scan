@@ -11,11 +11,11 @@ GitHub Action for repository security scanning, using Sonar Cloud and Fossa.
 ## Inputs
 
 ### `github-key`
-** Required ** [Github token](https://docs.github.com/en/actions/security-guides/automatic-token-authentication) required by the Sonar Cloud. Is set by default by GitHub in your repository as `secrets.GITHUB_TOKEN`.
+**Required:** [Github token](https://docs.github.com/en/actions/security-guides/automatic-token-authentication) required by the Sonar Cloud. Is set by default by GitHub in your repository as `secrets.GITHUB_TOKEN`.
 ### `fossa-key`
-** Required ** [Fossa API key](https://docs.fossa.com/docs/api-reference#api-tokens).
+**Required:** [Fossa API key](https://docs.fossa.com/docs/api-reference#api-tokens).
 ### `sonar-key`
-** Required ** Required this is the token used to authenticate access to SonarCloud. You can generate a token on your [Security page](https://sonarcloud.io/account/security/) in SonarCloud.
+**Required:** Required this is the token used to authenticate access to SonarCloud. You can generate a token on your [Security page](https://sonarcloud.io/account/security/) in SonarCloud.
 
 ## Results
 
