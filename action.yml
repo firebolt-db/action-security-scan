@@ -18,11 +18,6 @@ runs:
       env:
         GITHUB_TOKEN: ${{ inputs.github-key }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ inputs.sonar-key }}
-      with:
-        args: >
-          -Dsonar.organization=firebolt-db
-          -Dsonar.projectKey=firebolt-db_firebolt-python-sdk
-          -Dsonar.sources=src
     - name: "Fossa branch fix"
       if: ${{ github.event_name == 'pull_request' }}
       run: |
