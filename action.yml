@@ -28,6 +28,8 @@ runs:
     - name: "Build"
       run: |
         python3 -m pip install pipenv
+        # Workaround for customised setup.py
+        python3 -m pip install -e .
         python3 -m pipenv install -e .
       shell: bash
     - name: "Run FOSSA Scan"
