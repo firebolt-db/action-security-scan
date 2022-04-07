@@ -34,8 +34,3 @@ runs:
       uses: fossas/fossa-action@v1
       with:
         api-key: ${{ inputs.fossa-key }}
-    - name: "Run FOSSA Test"
-      uses: fossas/fossa-action@v1
-      with:
-        api-key: ${{ inputs.fossa-key }}
-        run-tests: true
