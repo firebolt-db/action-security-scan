@@ -6,14 +6,11 @@ GitHub Action for repository security scanning, using Sonar Cloud and Fossa.
 
 1. [Sonar Cloud project](https://sonarcloud.io/projects) created.
 1. Sonar Cloud `sonar-project.properties` file with at least `sonar.projectKey` and `sonar.organization` parameters specified. [Parameter List](https://docs.sonarcloud.io/advanced-setup/analysis-parameters/)
-1. (Optional) `fossa.yml` to [customise Fossa behaviour](https://github.com/fossas/fossa-cli/blob/master/docs/references/files/fossa-yml.md).
 
 ## Inputs
 
 ### `github-key`
 **Required:** [Github token](https://docs.github.com/en/actions/security-guides/automatic-token-authentication) required by the Sonar Cloud. Is set by default by GitHub in your repository as `secrets.GITHUB_TOKEN`.
-### `fossa-key`
-**Required:** [Fossa API key](https://docs.fossa.com/docs/api-reference#api-tokens).
 ### `sonar-key`
 **Required:** Required this is the token used to authenticate access to SonarCloud. You can generate a token on your [Security page](https://sonarcloud.io/account/security/) in SonarCloud.
 
@@ -25,7 +22,6 @@ GitHub Action for repository security scanning, using Sonar Cloud and Fossa.
 ## Known limitations
 
 1. Sonar Cloud code coverage is not implemented and will report 0%. This will randomly pass/fail the scan.
-1. Fossa PR decoration is not working. As a workaround fossa-test is run after initial scan that will fail the action execution if any issues are found.
 
 ## Example
 
