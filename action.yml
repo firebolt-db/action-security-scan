@@ -14,7 +14,7 @@ runs:
   using: "composite"
   steps:
     - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@v1.6
+      uses: SonarSource/sonarcloud-github-action@v2.1.1
       env:
         GITHUB_TOKEN: ${{ inputs.github-key }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ inputs.sonar-key }}
