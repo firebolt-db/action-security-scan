@@ -13,7 +13,15 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Verify secrets are provided
+      shell: bash
+      run: |
+        if [ -z "${{ inputs.github-key }}" ] && [ -z "${{ inputs.fossa-key }}" ]; then
+          echo "No secrets provided. Skipping Sonar check..."
+        fi
+
     - name: SonarCloud Scan
+      if: ${{ inputs.sonar-key }} # skip if run from a fork (secrets are empty)
       uses: SonarSource/sonarcloud-github-action@v2.1.1
       env:
         GITHUB_TOKEN: ${{ inputs.github-key }}  # Needed to get PR information, if any
