@@ -15,14 +15,17 @@ runs:
   steps:
     - name: Verify secrets are provided
       shell: bash
+      env:
+        GITHUB_KEY: ${{ inputs.github-key }}
+        SONAR_KEY: ${{ inputs.sonar-key }}
       run: |
-        if [ -z "${{ inputs.github-key }}" ] && [ -z "${{ inputs.sonar-key }}" ]; then
+        if [ -z "$GITHUB_KEY" ] && [ -z "$SONAR_KEY" ]; then
           echo "No secrets provided. Skipping Sonar check..."
         fi
 
     - name: SonarCloud Scan
       if: ${{ inputs.sonar-key }} # skip if run from a fork (secrets are empty)
-      uses: SonarSource/sonarqube-scan-action@a31c9398be7ace6bbfaf30c0bd5d415f843d45e9 # v7.0.0
+      uses: SonarSource/sonarqube-scan-action@d209202bc7d53ff1cc128f7f907dac145c9d6ae9 # v8.3.0
       env:
         GITHUB_TOKEN: ${{ inputs.github-key }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ inputs.sonar-key }}
